@@ -2496,8 +2496,11 @@
                     document.getElementById('display-role').innerText = currentUser.role || '學員';
                     const r = (currentUser.role || '').toUpperCase();
                     if (['ADMIN', 'TEACHER', 'LEADER', '組長'].some(x => r.includes(x.toUpperCase()))) document.getElementById('nav-admin').classList.remove('hidden');
-                    if (['ADMIN', 'TEACHER'].some(x => r.includes(x.toUpperCase()))) { document.getElementById('nav-questions').classList.remove('hidden'); document.getElementById('add-announcement-btn')?.classList.remove('hidden'); document.getElementById('nav-img-transfer').classList.remove('hidden'); }
-                    else if (r.includes('發布員')) { document.getElementById('add-announcement-btn')?.classList.remove('hidden'); document.getElementById('nav-img-transfer').classList.remove('hidden'); }
+                    if (['ADMIN', 'TEACHER', '發布員'].some(x => r.includes(x.toUpperCase()))) {
+                        document.getElementById('nav-questions').classList.remove('hidden');
+                        document.getElementById('add-announcement-btn')?.classList.remove('hidden');
+                        document.getElementById('nav-img-transfer').classList.remove('hidden');
+                    }
                     switchView('bulletin');
                 } catch (e) { switchView('login'); }
             } else switchView('login');
